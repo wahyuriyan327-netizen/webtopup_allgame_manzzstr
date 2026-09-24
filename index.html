@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MANZZ STORE - Top Up All Game</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+  }
+
+  body {
+    background: #0a0e27;
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(120, 0, 255, 0.25), transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(0, 200, 255, 0.2), transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(255, 0, 150, 0.1), transparent 60%);
+  }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 5%;
+    background: rgba(10, 14, 39, 0.8);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(120, 0, 255, 0.3);
+  }
+
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #00d4ff, #a855f7, #ff00a0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    text-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+  }
+
+  .logo span {
+    -webkit-text-fill-color: #fff;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    position: relative;
+  }
+
+  .nav-links a:hover {
+    color: #00d4ff;
+    text-shadow: 0 0 15px #00d4ff;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    text-align: center;
+    padding: 70px 20px 40px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    font-weight: 900;
+    background: linear-gradient(90deg, #00d4ff, #a855f7, #ff00a0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+    animation: glow 3s infinite alternate;
+  }
+
+  @keyframes glow {
+    from { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5)); }
+    to { filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.9)); }
+  }
+
+  .hero p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 25px;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 50px;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    color: #00d4ff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.5); }
+    50% { box-shadow: 0 0 20px 5px rgba(0, 212, 255, 0.2); }
+  }
+
+  /* ===== SECTION ===== */
+  section {
+    padding: 40px 5%;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 35px;
+    font-weight: 800;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    margin: 12px auto 0;
+    background: linear-gradient(90deg, #00d4ff, #a855f7);
+    border-radius: 5px;
+  }
+
+  /* ===== GAME GRID ===== */
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 22px;
+  }
+
+  .game-card {
+    background: linear-gradient(145deg, #141a3a, #0e132e);
+    border: 1px solid rgba(120, 0, 255, 0.2);
+    border-radius: 18px;
+    padding: 25px 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .game-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.15), transparent);
+    transform: rotate(45deg);
+    transition: 0.6s;
+    opacity: 0;
+  }
+
+  .game-card:hover::before {
+    opacity: 1;
+    animation: shine 1.5s;
+  }
+
+  @keyframes shine {
+    from { transform: translateX(-100%) rotate(45deg); }
+    to { transform: translateX(100%) rotate(45deg); }
+  }
+
+  .game-card:hover {
+    transform: translateY(-8px);
+    border-color: #00d4ff;
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+  }
+
+  .game-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+    display: block;
+    filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.6));
+  }
+
+  .game-name {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .game-tag {
+    font-size: 0.75rem;
+    color: #00d4ff;
+    background: rgba(0, 212, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 50px;
+    display: inline-block;
+  }
+
+  /* ===== INFO ADMIN ===== */
+  .admin-box {
+    max-width: 700px;
+    margin: 50px auto;
+    background: linear-gradient(145deg, #141a3a, #0e132e);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.2);
+  }
+
+  .admin-box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #ff00a0;
+  }
+
+  .admin-box p {
+    color: #94a3b8;
+    margin-bottom: 20px;
+  }
+
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 32px;
+    background: linear-gradient(90deg, #25d366, #128c7e);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  }
+
+  .wa-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.7);
+  }
+
+  .wa-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #64748b;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(120, 0, 255, 0.2);
+    margin-top: 40px;
+  }
+
+  footer span {
+    color: #00d4ff;
+    font-weight: 700;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero { padding: 50px 15px 30px; }
+    .game-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .game-card { padding: 18px 10px; }
+    .game-icon { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">MANZZ<span> STORE</span></div>
+    <ul class="nav-links">
+      <li><a href="#games">Games</a></li>
+      <li><a href="#admin">Bantuan</a></li>
+      <li><a href="#admin">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="badge">⚡ PROSES CEPAT & AMAN ⚡</div>
+    <h1>TOP UP ALL GAME<br>DIAMOND TERMURAH</h1>
+    <p>Layanan top up diamond semua game favoritmu. Proses instan, harga bersaing, dan 100% aman.</p>
+  </div>
+
+  <!-- GAMES -->
+  <section id="games">
+    <h2 class="section-title">🎮 Pilih Game Kamu</h2>
+    <div class="game-grid">
+      <div class="game-card">
+        <span class="game-icon">🔥</span>
+        <div class="game-name">Mobile Legends</div>
+        <span class="game-tag">Diamond</span>
+      </div>
+      <div class="game-card">
+        <span class="game-icon">🎯</span>
+        <div class="game-name">Free Fire</div>
+        <span class="game-tag">Diamond</span>
+      </div>
+      <div class="game-card">
+        <span class="game-icon">⚔️</span>
+        <div class="game-name">PUBG Mobile</div>
+        <span class="game-tag">UC</span>
+      </div>
+      <div class="game-card">
+        <span class="game-icon">🐉</span>
+        <div class="game-name">Clash of Clans</div>
+        <span class="game-tag">Gems</span>
+      </div>
+      <div class="game-card">
+        <span class="game-icon">💎</span>
+        <div class="game-name">Genshin Impact</div>
+        <span class="game-tag">Genesis</span>
+      </div>
+      <div class="game-card">
+        <span class="game-icon">🏆</span>
+        <div class="game-name">Honor of Kings</div>
+        <span class="game-tag">Diamond</span>
+      </div>
+      <div class="game-card">
+        <span class="game-icon">🌟</span>
+        <div class="game-name">Valorant</div>
+        <span class="game-tag">Points</span>
+      </div>
+      <div class="game-card">
+        <span class="game-icon">🎮</span>
+        <div class="game-name">Call of Duty</div>
+        <span class="game-tag">CP</span>
+      </div>
+      <div class="game-card">
+        <span class="game-icon">🦸</span>
+        <div class="game-name">Arena of Valor</div>
+        <span class="game-tag">Voucher</span>
+      </div>
+      <div class="game-card">
+        <span class="game-icon">🎲</span>
+        <div class="game-name">Roblox</div>
+        <span class="game-tag">Robux</span>
+      </div>
+      <div class="game-card">
+        <span class="game-icon">🚀</span>
+        <div class="game-name">Honkai Star Rail</div>
+        <span class="game-tag">Oneiric</span>
+      </div>
+      <div class="game-card">
+        <span class="game-icon">⚡</span>
+        <div class="game-name">League of Legends</div>
+        <span class="game-tag">RP</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMIN -->
+  <div class="admin-box" id="admin">
+    <h3>⚠️ Ada Kendala? Hubungi Admin ⚠️</h3>
+    <p>Jika ada masalah saat top up, silakan hubungi admin kami:</p>
+    <a href="https://wa.me/6287745460192" class="wa-btn" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      087745460192
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 <span>MANZZ STORE</span> — Top Up All Game Terpercaya
+  </footer>
+
+</body>
+</html>
